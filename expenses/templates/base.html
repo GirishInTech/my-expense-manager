@@ -43,12 +43,23 @@
       }
       
       function updatePageLanguage(lang) {
+        // Update text content
         const elements = document.querySelectorAll('[data-lang-en]');
         elements.forEach(el => {
           if (lang === 'kn' && el.getAttribute('data-lang-kn')) {
             el.textContent = el.getAttribute('data-lang-kn');
           } else if (el.getAttribute('data-lang-en')) {
             el.textContent = el.getAttribute('data-lang-en');
+          }
+        });
+        
+        // Update placeholders
+        const placeholderElements = document.querySelectorAll('[data-lang-placeholder-en]');
+        placeholderElements.forEach(el => {
+          if (lang === 'kn' && el.getAttribute('data-lang-placeholder-kn')) {
+            el.placeholder = el.getAttribute('data-lang-placeholder-kn');
+          } else if (el.getAttribute('data-lang-placeholder-en')) {
+            el.placeholder = el.getAttribute('data-lang-placeholder-en');
           }
         });
       }

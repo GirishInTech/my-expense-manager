@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="max-w-md mx-auto mt-6 sm:mt-10 px-3 sm:px-0">
-  <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center" data-lang-en="Enter Password to View" data-lang-kn="ವೀಕ್ಷಿಸಲು ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ">Enter Password to View</h1>
-    
-    <p class="text-gray-600 text-sm sm:text-base mb-6 text-center" data-lang-en="Enter the password shared with you to view expense records." data-lang-kn="ಖರ್ಚು ದಾಖಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ.">Enter the password shared with you to view expense records.</p>
+<div class="max-w-2xl mx-auto mt-6 sm:mt-8 px-3 sm:px-0">
+  <!-- Welcome Banner -->
+  <div class="bg-gradient-to-r from-blue-50 via-green-50 to-indigo-50 border-2 border-indigo-200 p-5 sm:p-6 rounded-xl shadow-lg mb-5 sm:mb-6">
+    <div class="flex items-start space-x-3 mb-3">
+      <span class="text-3xl sm:text-4xl">😊</span>
+      <div class="flex-1">
+        <h1 class="text-xl sm:text-2xl font-bold text-indigo-700 mb-2" data-lang-en="🙏 Welcome to Girish's Expense Tracker" data-lang-kn="🙏 ಗಿರೀಶ್‌ನ ಖರ್ಚು ಟ್ರ್ಯಾಕರ್‌ಗೆ ಸ್ವಾಗತ">🙏 Welcome to Girish's Expense Tracker</h1>
+        <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-2" data-lang-en="Dear Family, I've built this to show exactly where every rupee goes. It's about being honest and responsible with financial planning. Thank you for trusting me! ❤️" data-lang-kn="ಪ್ರಿಯ ಕುಟುಂಬ, ಪ್ರತಿ ರೂಪಾಯಿ ಎಲ್ಲಿಗೆ ಹೋಗುತ್ತದೆ ಎಂದು ತೋರಿಸಲು ಇದನ್ನು ನಿರ್ಮಿಸಿದ್ದೇನೆ. ಇದು ಪ್ರಾಮಾಣಿಕ ಮತ್ತು ಜವಾಬ್ದಾರಿಯುತ ಹಣಕಾಸು ಯೋಜನೆಯ ಬಗ್ಗೆ. ನಂಬಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು! ❤️">Dear Family, I've built this to show exactly where every rupee goes. It's about being honest and responsible with financial planning. Thank you for trusting me! ❤️</p>
+        <p class="text-xs sm:text-sm text-indigo-600 font-medium italic" data-lang-en="- Built with love by Girish 🙏" data-lang-kn="- ಗಿರೀಶ್‌ನಿಂದ ಪ್ರೀತಿಯಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ 🙏">- Built with love by Girish 🙏</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Card -->
+  <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+    <h2 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 text-center text-indigo-700" data-lang-en="🔐 Enter Your Family Password" data-lang-kn="🔐 ನಿಮ್ಮ ಕುಟುಂಬ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ">🔐 Enter Your Family Password</h2>
+    <p class="text-gray-600 text-sm sm:text-base mb-5 sm:mb-6 text-center" data-lang-en="Use the password Girish shared with you" data-lang-kn="ಗಿರೀಶ್ ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಪಾಸ್‌ವರ್ಡ್ ಬಳಸಿ">Use the password Girish shared with you</p>
     
     {% if messages %}
     <div class="mb-4">
@@ -25,47 +37,50 @@
           id="view_password" 
           name="view_password" 
           required 
-          class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-          placeholder="Enter view password"
+          class="w-full border-2 border-indigo-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-lg p-3 text-base transition-all" 
+          style="min-height: 44px;"
+          placeholder="Enter your password"
+          data-lang-placeholder-en="Enter your password"
+          data-lang-placeholder-kn="ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ"
           autofocus
         >
       </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded" data-lang-en="Access Dashboard" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಪ್ರವೇಶಿಸಿ">Access Dashboard</button>
+      <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white font-medium py-3 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02]" data-lang-en="✨ View Expenses ✨" data-lang-kn="✨ ಖರ್ಚುಗಳನ್ನು ನೋಡಿ ✨">
+        ✨ View Expenses ✨
+      </button>
     </form>
-    
-    <!-- Instructions Section -->
-    <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-      <h3 class="text-sm font-semibold text-blue-900 mb-3" data-lang-en="📋 After Login, You Can:" data-lang-kn="📋 ಲಾಗಿನ್ ನಂತರ, ನೀವು ಮಾಡಬಹುದು:">📋 After Login, You Can:</h3>
-      <ul class="space-y-2 text-xs sm:text-sm text-gray-700">
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">✓</span>
-          <span data-lang-en="View all expenses - See complete spending details with amounts, categories, and dates" data-lang-kn="ಎಲ್ಲಾ ಖರ್ಚುಗಳನ್ನು ವೀಕ್ಷಿಸಿ - ಮೊತ್ತಗಳು, ವರ್ಗಗಳು ಮತ್ತು ದಿನಾಂಕಗಳೊಂದಿಗೆ ಸಂಪೂರ್ಣ ಖರ್ಚು ವಿವರಗಳನ್ನು ನೋಡಿ"><strong>View all expenses</strong> - See complete spending details with amounts, categories, and dates</span>
+
+    <!-- What You Can Do Section -->
+    <div class="mt-5 sm:mt-6 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 p-4 sm:p-5 rounded-xl shadow-md">
+      <h3 class="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-purple-800 flex items-center" data-lang-en="🎯 What You'll See Inside" data-lang-kn="🎯 ಒಳಗೆ ನೀವು ಏನನ್ನು ನೋಡುತ್ತೀರಿ">🎯 What You'll See Inside</h3>
+      <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-gray-700">
+        <li class="flex items-start bg-white p-2.5 sm:p-3 rounded-lg shadow-sm">
+          <span class="text-lg sm:text-xl mr-2 sm:mr-3">📊</span>
+          <span data-lang-en="Complete expense transparency - Every rupee tracked with category, date, and description" data-lang-kn="ಸಂಪೂರ್ಣ ಖರ್ಚು ಪಾರದರ್ಶಕತೆ - ಪ್ರತಿ ರೂಪಾಯಿಯನ್ನು ವರ್ಗ, ದಿನಾಂಕ ಮತ್ತು ವಿವರಣೆಯೊಂದಿಗೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾಗಿದೆ">Complete expense transparency - Every rupee tracked with category, date, and description</span>
         </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">✓</span>
-          <span data-lang-en="Filter by dates - Use date filters or quick buttons (Today, This Week, This Month)" data-lang-kn="ದಿನಾಂಕದ ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಿ - ದಿನಾಂಕ ಫಿಲ್ಟರ್‌ಗಳು ಅಥವಾ ತ್ವರಿತ ಬಟನ್‌ಗಳನ್ನು ಬಳಸಿ (ಇಂದು, ಈ ವಾರ, ಈ ತಿಂಗಳು)"><strong>Filter by dates</strong> - Use date filters or quick buttons (Today, This Week, This Month)</span>
+        <li class="flex items-start bg-white p-2.5 sm:p-3 rounded-lg shadow-sm">
+          <span class="text-lg sm:text-xl mr-2 sm:mr-3">📅</span>
+          <span data-lang-en="Smart date filtering - Quick buttons for Today, This Week, This Month views" data-lang-kn="ಸ್ಮಾರ್ಟ್ ದಿನಾಂಕ ಫಿಲ್ಟರಿಂಗ್ - ಇಂದು, ಈ ವಾರ, ಈ ತಿಂಗಳ ವೀಕ್ಷಣೆಗಳಿಗಾಗಿ ತ್ವರಿತ ಬಟನ್‌ಗಳು">Smart date filtering - Quick buttons for Today, This Week, This Month views</span>
         </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">✓</span>
-          <span data-lang-en="Check monthly totals - See total spending and daily breakdowns" data-lang-kn="ಮಾಸಿಕ ಒಟ್ಟುಗಳನ್ನು ಪರಿಶೀಲಿಸಿ - ಒಟ್ಟು ಖರ್ಚು ಮತ್ತು ದೈನಂದಿನ ವಿಭಜನೆಗಳನ್ನು ನೋಡಿ"><strong>Check monthly totals</strong> - See total spending and daily breakdowns</span>
+        <li class="flex items-start bg-white p-2.5 sm:p-3 rounded-lg shadow-sm">
+          <span class="text-lg sm:text-xl mr-2 sm:mr-3">💰</span>
+          <span data-lang-en="Monthly spending summary - Clear totals and daily breakdowns at a glance" data-lang-kn="ಮಾಸಿಕ ಖರ್ಚು ಸಾರಾಂಶ - ಒಂದು ನೋಟದಲ್ಲಿ ಸ್ಪಷ್ಟ ಒಟ್ಟು ಮತ್ತು ದೈನಂದಿನ ವಿಭಜನೆಗಳು">Monthly spending summary - Clear totals and daily breakdowns at a glance</span>
         </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">✓</span>
-          <span data-lang-en="Browse by month - Select different months from the dropdown menu" data-lang-kn="ತಿಂಗಳ ಮೂಲಕ ಬ್ರೌಸ್ ಮಾಡಿ - ಡ್ರಾಪ್‌ಡೌನ್ ಮೆನುವಿನಿಂದ ವಿವಿಧ ತಿಂಗಳುಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"><strong>Browse by month</strong> - Select different months from the dropdown menu</span>
+        <li class="flex items-start bg-white p-2.5 sm:p-3 rounded-lg shadow-sm">
+          <span class="text-lg sm:text-xl mr-2 sm:mr-3">🗂️</span>
+          <span data-lang-en="Month-wise browsing - Jump to any month to review past expenses" data-lang-kn="ತಿಂಗಳ ಪ್ರಕಾರ ಬ್ರೌಸಿಂಗ್ - ಹಿಂದಿನ ಖರ್ಚುಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಯಾವುದೇ ತಿಂಗಳಿಗೆ ಜಿಗಿಯಿರಿ">Month-wise browsing - Jump to any month to review past expenses</span>
         </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">✓</span>
-          <span data-lang-en="Scroll through all records - View complete expense history in the table" data-lang-kn="ಎಲ್ಲಾ ದಾಖಲೆಗಳ ಮೂಲಕ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ - ಟೇಬಲ್‌ನಲ್ಲಿ ಸಂಪೂರ್ಣ ಖರ್ಚು ಇತಿಹಾಸವನ್ನು ವೀಕ್ಷಿಸಿ"><strong>Scroll through all records</strong> - View complete expense history in the table</span>
+        <li class="flex items-start bg-white p-2.5 sm:p-3 rounded-lg shadow-sm">
+          <span class="text-lg sm:text-xl mr-2 sm:mr-3">🌐</span>
+          <span data-lang-en="Language support - Switch between English and ಕನ್ನಡ anytime" data-lang-kn="ಭಾಷಾ ಬೆಂಬಲ - ಯಾವಾಗ ಬೇಕಾದರೂ English ಮತ್ತು ಕನ್ನಡ ನಡುವೆ ಬದಲಾಯಿಸಿ">Language support - Switch between English and ಕನ್ನಡ anytime</span>
         </li>
       </ul>
     </div>
-    
-    <div class="mt-6 text-center">
-      <p class="text-sm text-gray-600">
-        <span data-lang-en="Are you an admin?" data-lang-kn="ನೀವು ನಿರ್ವಾಹಕರೇ?">Are you an admin?</span>
-        <a href="{% url 'login' %}" class="text-indigo-600 hover:underline font-medium" data-lang-en="Admin Login" data-lang-kn="ನಿರ್ವಾಹಕ ಲಾಗಿನ್">Admin Login</a>
-      </p>
-    </div>
+
+    <p class="mt-6 sm:mt-8 text-center text-sm">
+      <span class="text-gray-600" data-lang-en="Are you an admin?" data-lang-kn="ನೀವು ನಿರ್ವಾಹಕರಾ?">Are you an admin?</span>
+      <a href="{% url 'login' %}" class="text-indigo-600 hover:text-indigo-800 hover:underline ml-1 font-semibold" data-lang-en="🔑 Admin Login" data-lang-kn="🔑 ನಿರ್ವಾಹಕ ಲಾಗಿನ್">🔑 Admin Login</a>
+    </p>
   </div>
 </div>
 {% endblock %}

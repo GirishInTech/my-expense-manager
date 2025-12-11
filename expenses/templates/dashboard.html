@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+
+<!-- Welcome Message for Family Members (only for non-admin users) -->
+{% if not user.is_staff %}
+<div class="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200 p-4 sm:p-6 rounded-xl shadow-md mb-4 sm:mb-6">
+  <div class="flex items-start space-x-3">
+    <span class="text-3xl sm:text-4xl">💚</span>
+    <div class="flex-1">
+      <h2 class="text-lg sm:text-xl font-bold text-green-800 mb-2" data-lang-en="Welcome to My Financial Journey! 🙏" data-lang-kn="ನನ್ನ ಹಣಕಾಸು ಪ್ರಯಾಣಕ್ಕೆ ಸ್ವಾಗತ! 🙏">Welcome to My Financial Journey! 🙏</h2>
+      <p class="text-sm sm:text-base text-gray-700 leading-relaxed" data-lang-en="Thank you for taking the time to review my expenses. Every transaction here represents my commitment to being transparent and responsible. I'm learning to manage money better every day, and your guidance means the world to me. 😊" data-lang-kn="ನನ್ನ ಖರ್ಚುಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಸಮಯ ತೆಗೆದುಕೊಂಡಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು. ಇಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ವಹಿವಾಟು ಪಾರದರ್ಶಕ ಮತ್ತು ಜವಾಬ್ದಾರಿಯುತವಾಗಿರುವ ನನ್ನ ಬದ್ಧತೆಯನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ. ನಾನು ಪ್ರತಿದಿನ ಹಣವನ್ನು ಉತ್ತಮವಾಗಿ ನಿರ್ವಹಿಸಲು ಕಲಿಯುತ್ತಿದ್ದೇನೆ ಮತ್ತು ನಿಮ್ಮ ಮಾರ್ಗದರ್ಶನ ನನಗೆ ಬಹಳ ಮುಖ್ಯ. 😊">Thank you for taking the time to review my expenses. Every transaction here represents my commitment to being transparent and responsible. I'm learning to manage money better every day, and your guidance means the world to me. 😊</p>
+      <p class="text-xs sm:text-sm text-green-700 font-medium mt-2" data-lang-en="- With love, Girish ❤️" data-lang-kn="- ಪ್ರೀತಿಯಿಂದ, ಗಿರೀಶ್ ❤️">- With love, Girish ❤️</p>
+    </div>
+  </div>
+</div>
+{% endif %}
+
 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
   <h1 class="text-xl sm:text-2xl font-semibold" data-lang-en="Dashboard - {{ year }} / {{ month }}" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ - {{ year }} / {{ month }}">Dashboard - {{ year }} / {{ month }}</h1>
   <div class="flex items-center space-x-2 sm:space-x-4">
