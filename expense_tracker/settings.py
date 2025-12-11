@@ -4,8 +4,11 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret-key-change-in-prod")
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = ["*"]
+
+# View password for family members to see expenses
+VIEW_PASSWORD = os.environ.get("VIEW_PASSWORD", "family2025")
 
 INSTALLED_APPS = [
     "django.contrib.admin",

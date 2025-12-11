@@ -5,10 +5,19 @@
   <div class="flex items-center space-x-2 sm:space-x-4">
     <form method="get" action="/" class="flex items-center space-x-2">
       <label for="month" class="text-sm">Month:</label>
-      <select id="month" name="month" class="border rounded p-1.5 text-sm">
-        {% for m in months %}
-          <option value="{{ m }}" {% if m == month %}selected{% endif %}>{{ m }}</option>
-        {% endfor %}
+      <select id="month" name="month" class="border rounded p-1.5 text-sm min-w-[140px]">
+        <option value="1" {% if month == 1 %}selected{% endif %}>1 - January</option>
+        <option value="2" {% if month == 2 %}selected{% endif %}>2 - February</option>
+        <option value="3" {% if month == 3 %}selected{% endif %}>3 - March</option>
+        <option value="4" {% if month == 4 %}selected{% endif %}>4 - April</option>
+        <option value="5" {% if month == 5 %}selected{% endif %}>5 - May</option>
+        <option value="6" {% if month == 6 %}selected{% endif %}>6 - June</option>
+        <option value="7" {% if month == 7 %}selected{% endif %}>7 - July</option>
+        <option value="8" {% if month == 8 %}selected{% endif %}>8 - August</option>
+        <option value="9" {% if month == 9 %}selected{% endif %}>9 - September</option>
+        <option value="10" {% if month == 10 %}selected{% endif %}>10 - October</option>
+        <option value="11" {% if month == 11 %}selected{% endif %}>11 - November</option>
+        <option value="12" {% if month == 12 %}selected{% endif %}>12 - December</option>
       </select>
       <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1.5 rounded text-sm">Go</button>
     </form>
@@ -16,21 +25,51 @@
 </div>
 
 <div class="bg-blue-50 border border-blue-200 p-3 sm:p-4 rounded shadow mb-4">
-  <form method="get" action="/" class="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-end gap-3">
-    <div class="flex-1 min-w-[140px]">
-      <label for="filter_start" class="block text-sm font-medium mb-1">From Date</label>
-      <input type="date" id="filter_start" name="filter_start" value="{{ filter_start|date:'Y-m-d' }}" class="border rounded p-2 w-full text-sm">
+  <h3 class="text-sm font-semibold mb-3">Filter by Date Range</h3>
+  <form method="get" action="/" class="space-y-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div>
+        <label for="filter_start" class="block text-sm font-medium mb-1">From Date</label>
+        <input type="date" id="filter_start" name="filter_start" value="{{ filter_start|date:'Y-m-d' }}" class="border rounded p-2.5 w-full text-base" style="min-height: 44px;">
+      </div>
+      <div>
+        <label for="filter_end" class="block text-sm font-medium mb-1">To Date</label>
+        <input type="date" id="filter_end" name="filter_end" value="{{ filter_end|date:'Y-m-d' }}" class="border rounded p-2.5 w-full text-base" style="min-height: 44px;">
+      </div>
     </div>
-    <div class="flex-1 min-w-[140px]">
-      <label for="filter_end" class="block text-sm font-medium mb-1">To Date</label>
-      <input type="date" id="filter_end" name="filter_end" value="{{ filter_end|date:'Y-m-d' }}" class="border rounded p-2 w-full text-sm">
-    </div>
-    <div class="flex gap-2">
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 rounded font-medium text-sm flex-1 sm:flex-none">Filter</button>
-      <a href="/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 sm:px-6 py-2 rounded font-medium text-sm inline-block text-center flex-1 sm:flex-none">Clear</a>
+    <div class="flex flex-wrap gap-2">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-medium text-sm flex-shrink-0">Apply Filter</button>
+      <a href="/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded font-medium text-sm inline-block text-center flex-shrink-0">Clear</a>
+      <button type="button" onclick="setToday()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">Today</button>
+      <button type="button" onclick="setThisWeek()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">This Week</button>
+      <button type="button" onclick="setThisMonth()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">This Month</button>
     </div>
   </form>
 </div>
+
+<script>
+  function setToday() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('filter_start').value = today;
+    document.getElementById('filter_end').value = today;
+  }
+  
+  function setThisWeek() {
+    const today = new Date();
+    const firstDay = new Date(today.setDate(today.getDate() - today.getDay()));
+    const lastDay = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+    document.getElementById('filter_start').value = firstDay.toISOString().split('T')[0];
+    document.getElementById('filter_end').value = lastDay.toISOString().split('T')[0];
+  }
+  
+  function setThisMonth() {
+    const today = new Date();
+    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    document.getElementById('filter_start').value = firstDay.toISOString().split('T')[0];
+    document.getElementById('filter_end').value = lastDay.toISOString().split('T')[0];
+  }
+</script>
 
 {% if messages %}
 <div class="mb-4">
@@ -64,6 +103,17 @@
     <div>
       <label for="id_category" class="block text-sm font-medium mb-1">Category</label>
       {{ form.category }}
+      <datalist id="category-suggestions">
+        <option value="Food">
+        <option value="Transport">
+        <option value="Groceries">
+        <option value="Entertainment">
+        <option value="Shopping">
+        <option value="Bills">
+        <option value="Health">
+        <option value="Education">
+        <option value="Others">
+      </datalist>
       {% if form.category.errors %}
         <p class="text-red-500 text-xs mt-1">{{ form.category.errors.0 }}</p>
       {% endif %}

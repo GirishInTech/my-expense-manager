@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-6 sm:mt-10 px-3 sm:px-0">
+  <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Enter Password to View</h1>
+    
+    <p class="text-gray-600 text-sm sm:text-base mb-6 text-center">
+      Enter the password shared with you to view expense records.
+    </p>
+    
+    {% if messages %}
+    <div class="mb-4">
+      {% for message in messages %}
+      <div class="{% if 'error' in message.tags %}bg-red-100 border-red-400 text-red-700{% else %}bg-green-100 border-green-400 text-green-700{% endif %} border px-4 py-3 rounded text-sm">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label for="view_password" class="block text-sm font-medium mb-2">Password</label>
+        <input 
+          type="password" 
+          id="view_password" 
+          name="view_password" 
+          required 
+          class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          placeholder="Enter view password"
+          autofocus
+        >
+      </div>
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded">
+        Access Dashboard
+      </button>
+    </form>
+    
+    <div class="mt-6 text-center">
+      <p class="text-sm text-gray-600">
+        Are you an admin? 
+        <a href="{% url 'login' %}" class="text-indigo-600 hover:underline font-medium">Admin Login</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

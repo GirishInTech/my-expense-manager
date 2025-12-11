@@ -7,9 +7,15 @@ from django.db.models import Sum
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.conf import settings
 
-from .models import Expense
+from .models import Expense, ViewPassword
 from .forms import ExpenseForm
+
+
+def check_view_access(request):
+    """Check if user has view access via password or admin login"""
+    return request.session.get('view_access') or request.user.is_staff
 
 
 def _get_month_range(year: int, month: int):
@@ -19,6 +25,10 @@ def _get_month_range(year: int, month: int):
 
 
 def dashboard(request):
+    # Check if user has view access
+    if not check_view_access(request):
+        return redirect('view_login')
+    
     today = timezone.localdate()
     year = int(request.GET.get("year", today.year))
     month = int(request.GET.get("month", today.month))
@@ -78,6 +88,10 @@ def dashboard(request):
 
 
 def monthly_view(request, year: int, month: int):
+    # Check if user has view access
+    if not check_view_access(request):
+        return redirect('view_login')
+    
     start, end = _get_month_range(year, month)
     qs = Expense.objects.filter(date__range=(start, end)).order_by("date", "id")
     total_for_month = qs.aggregate(total=Sum("amount"))["total"] or 0
@@ -108,6 +122,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                request.session['view_access'] = True
                 messages.success(request, f"Welcome back, {username}!")
                 return redirect("dashboard")
             else:
@@ -121,8 +136,9 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    request.session['view_access'] = False
     messages.success(request, "You have been logged out successfully.")
-    return redirect("dashboard")
+    return redirect("view_login")
 
 
 def edit_expense(request, expense_id):
@@ -163,3 +179,78 @@ def delete_expense(request, expense_id):
     
     context = {"expense": expense}
     return render(request, "delete_expense.html", context)
+
+
+def view_login(request):
+    """Login view for family members to enter view password"""
+    if request.method == "POST":
+        entered_password = request.POST.get("view_password")
+        
+        # Check against active passwords in database
+        valid_password = ViewPassword.objects.filter(
+            password=entered_password,
+            is_active=True
+        ).first()
+        
+        if valid_password:
+            request.session['view_access'] = True
+            messages.success(request, "Access granted! Welcome.")
+            return redirect("dashboard")
+        else:
+            messages.error(request, "Incorrect password. Please try again.")
+    
+    return render(request, "view_login.html")
+
+
+def change_view_password(request):
+    """Redirect to manage_passwords"""
+    return redirect('manage_passwords')
+
+
+def manage_passwords(request):
+    """Allow admin to manage multiple view passwords"""
+    if not request.user.is_staff:
+        messages.error(request, "Only admin can manage passwords.")
+        return redirect("dashboard")
+    
+    if request.method == "POST":
+        action = request.POST.get("action")
+        
+        if action == "add":
+            password = request.POST.get("password")
+            label = request.POST.get("label")
+            
+            if password and label:
+                if ViewPassword.objects.filter(password=password).exists():
+                    messages.error(request, "This password already exists.")
+                else:
+                    ViewPassword.objects.create(password=password, label=label)
+                    messages.success(request, f"Password added for '{label}': {password}")
+            else:
+                messages.error(request, "Both password and label are required.")
+        
+        elif action == "delete":
+            password_id = request.POST.get("password_id")
+            try:
+                pwd = ViewPassword.objects.get(id=password_id)
+                pwd.delete()
+                messages.success(request, f"Password for '{pwd.label}' deleted.")
+            except ViewPassword.DoesNotExist:
+                messages.error(request, "Password not found.")
+        
+        elif action == "toggle":
+            password_id = request.POST.get("password_id")
+            try:
+                pwd = ViewPassword.objects.get(id=password_id)
+                pwd.is_active = not pwd.is_active
+                pwd.save()
+                status = "activated" if pwd.is_active else "deactivated"
+                messages.success(request, f"Password for '{pwd.label}' {status}.")
+            except ViewPassword.DoesNotExist:
+                messages.error(request, "Password not found.")
+        
+        return redirect("manage_passwords")
+    
+    passwords = ViewPassword.objects.all()
+    context = {"passwords": passwords}
+    return render(request, "manage_passwords.html", context)

@@ -33,6 +33,17 @@
       <div>
         <label for="id_category" class="block text-sm font-medium mb-1">Category</label>
         {{ form.category }}
+        <datalist id="category-suggestions">
+          <option value="Food">
+          <option value="Transport">
+          <option value="Groceries">
+          <option value="Entertainment">
+          <option value="Shopping">
+          <option value="Bills">
+          <option value="Health">
+          <option value="Education">
+          <option value="Others">
+        </datalist>
         {% if form.category.errors %}
           <p class="text-red-500 text-xs mt-1">{{ form.category.errors.0 }}</p>
         {% endif %}

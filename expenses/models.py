@@ -9,3 +9,16 @@ class Expense(models.Model):
 
     def __str__(self) -> str:
         return f"{self.date:%Y-%m-%d} - ₹{self.amount} - {self.category}"
+
+
+class ViewPassword(models.Model):
+    password = models.CharField(max_length=100, unique=True)
+    label = models.CharField(max_length=100, help_text="e.g., 'Mom', 'Dad', 'Sister'")
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return f"{self.label} - {self.password}"
+
+    class Meta:
+        ordering = ['-created_at']
