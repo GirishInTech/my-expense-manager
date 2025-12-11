@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
-  <h1 class="text-xl sm:text-2xl font-semibold">Dashboard - {{ year }} / {{ month }}</h1>
+  <h1 class="text-xl sm:text-2xl font-semibold" data-lang-en="Dashboard - {{ year }} / {{ month }}" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ - {{ year }} / {{ month }}">Dashboard - {{ year }} / {{ month }}</h1>
   <div class="flex items-center space-x-2 sm:space-x-4">
     <form method="get" action="/" class="flex items-center space-x-2">
-      <label for="month" class="text-sm">Month:</label>
+      <label for="month" class="text-sm" data-lang-en="Month:" data-lang-kn="ತಿಂಗಳು:">Month:</label>
       <select id="month" name="month" class="border rounded p-1.5 text-sm min-w-[140px]">
         <option value="1" {% if month == 1 %}selected{% endif %}>1 - January</option>
         <option value="2" {% if month == 2 %}selected{% endif %}>2 - February</option>
@@ -19,30 +19,30 @@
         <option value="11" {% if month == 11 %}selected{% endif %}>11 - November</option>
         <option value="12" {% if month == 12 %}selected{% endif %}>12 - December</option>
       </select>
-      <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1.5 rounded text-sm">Go</button>
+      <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1.5 rounded text-sm" data-lang-en="Go" data-lang-kn="ಹೋಗಿ">Go</button>
     </form>
   </div>
 </div>
 
 <div class="bg-blue-50 border border-blue-200 p-3 sm:p-4 rounded shadow mb-4">
-  <h3 class="text-sm font-semibold mb-3">Filter by Date Range</h3>
+  <h3 class="text-sm font-semibold mb-3" data-lang-en="Filter by Date Range" data-lang-kn="ದಿನಾಂಕ ವ್ಯಾಪ್ತಿಯ ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಿ">Filter by Date Range</h3>
   <form method="get" action="/" class="space-y-3">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div>
-        <label for="filter_start" class="block text-sm font-medium mb-1">From Date</label>
+        <label for="filter_start" class="block text-sm font-medium mb-1" data-lang-en="From Date" data-lang-kn="ಇಂದ ದಿನಾಂಕ">From Date</label>
         <input type="date" id="filter_start" name="filter_start" value="{{ filter_start|date:'Y-m-d' }}" class="border rounded p-2.5 w-full text-base" style="min-height: 44px;">
       </div>
       <div>
-        <label for="filter_end" class="block text-sm font-medium mb-1">To Date</label>
+        <label for="filter_end" class="block text-sm font-medium mb-1" data-lang-en="To Date" data-lang-kn="ದಿನಾಂಕದವರೆಗೆ">To Date</label>
         <input type="date" id="filter_end" name="filter_end" value="{{ filter_end|date:'Y-m-d' }}" class="border rounded p-2.5 w-full text-base" style="min-height: 44px;">
       </div>
     </div>
     <div class="flex flex-wrap gap-2">
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-medium text-sm flex-shrink-0">Apply Filter</button>
-      <a href="/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded font-medium text-sm inline-block text-center flex-shrink-0">Clear</a>
-      <button type="button" onclick="setToday()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">Today</button>
-      <button type="button" onclick="setThisWeek()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">This Week</button>
-      <button type="button" onclick="setThisMonth()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0">This Month</button>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-medium text-sm flex-shrink-0" data-lang-en="Apply Filter" data-lang-kn="ಫಿಲ್ಟರ್ ಅನ್ವಯಿಸಿ">Apply Filter</button>
+      <a href="/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded font-medium text-sm inline-block text-center flex-shrink-0" data-lang-en="Clear" data-lang-kn="ತೆರವುಗೊಳಿಸಿ">Clear</a>
+      <button type="button" onclick="setToday()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0" data-lang-en="Today" data-lang-kn="ಇಂದು">Today</button>
+      <button type="button" onclick="setThisWeek()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0" data-lang-en="This Week" data-lang-kn="ಈ ವಾರ">This Week</button>
+      <button type="button" onclick="setThisMonth()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded text-sm flex-shrink-0" data-lang-en="This Month" data-lang-kn="ಈ ತಿಂಗಳು">This Month</button>
     </div>
   </form>
 </div>
@@ -83,11 +83,11 @@
 
 {% if user.is_staff %}
 <div class="bg-white p-4 sm:p-6 rounded-lg shadow mb-4 sm:mb-6">
-  <h2 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Add New Expense</h2>
+  <h2 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" data-lang-en="Add New Expense" data-lang-kn="ಹೊಸ ಖರ್ಚು ಸೇರಿಸಿ">Add New Expense</h2>
   <form method="post" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
     {% csrf_token %}
     <div>
-      <label for="id_date" class="block text-sm font-medium mb-1">Date</label>
+      <label for="id_date" class="block text-sm font-medium mb-1" data-lang-en="Date" data-lang-kn="ದಿನಾಂಕ">Date</label>
       {{ form.date }}
       {% if form.date.errors %}
         <p class="text-red-500 text-xs mt-1">{{ form.date.errors.0 }}</p>
@@ -126,7 +126,7 @@
       {% endif %}
     </div>
     <div class="sm:col-span-2 lg:col-span-4">
-      <button type="submit" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2.5 px-6 rounded">
+      <button type="submit" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2.5 px-6 rounded" data-lang-en="Add Expense" data-lang-kn="ಖರ್ಚು ಸೇರಿಸಿ">
         Add Expense
       </button>
     </div>
@@ -136,16 +136,16 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
   <div class="bg-white p-4 rounded-lg shadow">
-    <div class="text-sm text-gray-600">Total this period</div>
+    <div class="text-sm text-gray-600" data-lang-en="Total this period" data-lang-kn="ಈ ಅವಧಿಯ ಒಟ್ಟು">Total this period</div>
     <div class="text-2xl sm:text-3xl font-bold">₹{{ total_for_month }}</div>
   </div>
   <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow">
-    <div class="text-sm font-semibold mb-2">Daily Totals</div>
+    <div class="text-sm font-semibold mb-2" data-lang-en="Daily Totals" data-lang-kn="ದೈನಂದಿನ ಒಟ್ಟು">Daily Totals</div>
     <div class="overflow-x-auto -mx-4 px-4">
       <table class="min-w-full text-sm">
         <thead>
           <tr class="text-left border-b">
-            <th class="py-2 pr-4">Date</th>
+            <th class="py-2 pr-4" data-lang-en="Date" data-lang-kn="ದಿನಾಂಕ">Date</th>
             <th class="py-2">Total (₹)</th>
           </tr>
         </thead>
@@ -156,7 +156,7 @@
             <td class="py-2">{{ d.total }}</td>
           </tr>
           {% empty %}
-          <tr><td colspan="2" class="py-2 text-gray-500">No expenses yet.</td></tr>
+          <tr><td colspan="2" class="py-2 text-gray-500" data-lang-en="No expenses yet." data-lang-kn="ಇನ್ನೂ ಖರ್ಚುಗಳಿಲ್ಲ.">No expenses yet.</td></tr>
           {% endfor %}
         </tbody>
       </table>
@@ -165,18 +165,18 @@
 </div>
 
 <div class="bg-white p-3 sm:p-4 rounded-lg shadow">
-  <div class="text-sm font-semibold mb-3">All Expenses ({{ expenses|length }})</div>
+  <div class="text-sm font-semibold mb-3" data-lang-en="All Expenses ({{ expenses|length }})" data-lang-kn="ಎಲ್ಲಾ ಖರ್ಚುಗಳು ({{ expenses|length }})">All Expenses ({{ expenses|length }})</div>
   <div class="overflow-x-auto -mx-3 sm:-mx-4">
     <div class="inline-block min-w-full align-middle">
       <table class="min-w-full text-sm">
         <thead>
           <tr class="text-left border-b bg-gray-50">
-            <th class="py-2 px-3 sm:px-2">Date</th>
+            <th class="py-2 px-3 sm:px-2" data-lang-en="Date" data-lang-kn="ದಿನಾಂಕ">Date</th>
             <th class="py-2 px-3 sm:px-2">Amount (₹)</th>
             <th class="py-2 px-3 sm:px-2">Category</th>
             <th class="py-2 px-3 sm:px-2 hidden sm:table-cell">Description</th>
             {% if user.is_staff %}
-            <th class="py-2 px-3 sm:px-2">Actions</th>
+            <th class="py-2 px-3 sm:px-2" data-lang-en="Actions" data-lang-kn="ಕ್ರಿಯೆಗಳು">Actions</th>
             {% endif %}
           </tr>
         </thead>
@@ -194,13 +194,13 @@
             </td>
             {% if user.is_staff %}
             <td class="py-2.5 px-3 sm:px-2 whitespace-nowrap">
-              <a href="{% url 'edit_expense' e.id %}" class="text-blue-600 hover:underline text-xs sm:text-sm inline-block mr-2 sm:mr-3">Edit</a>
-              <a href="{% url 'delete_expense' e.id %}" class="text-red-600 hover:underline text-xs sm:text-sm inline-block">Delete</a>
+              <a href="{% url 'edit_expense' e.id %}" class="text-blue-600 hover:underline text-xs sm:text-sm inline-block mr-2 sm:mr-3" data-lang-en="Edit" data-lang-kn="ಸಂಪಾದಿಸಿ">Edit</a>
+              <a href="{% url 'delete_expense' e.id %}" class="text-red-600 hover:underline text-xs sm:text-sm inline-block" data-lang-en="Delete" data-lang-kn="ಅಳಿಸಿ">Delete</a>
             </td>
             {% endif %}
           </tr>
           {% empty %}
-          <tr><td colspan="{% if user.is_staff %}5{% else %}4{% endif %}" class="py-3 px-3 sm:px-2 text-gray-500 text-center">No expenses for this period.</td></tr>
+          <tr><td colspan="{% if user.is_staff %}5{% else %}4{% endif %}" class="py-3 px-3 sm:px-2 text-gray-500 text-center" data-lang-en="No expenses for this period." data-lang-kn="ಈ ಅವಧಿಗೆ ಯಾವುದೇ ಖರ್ಚುಗಳಿಲ್ಲ.">No expenses for this period.</td></tr>
           {% endfor %}
         </tbody>
       </table>

@@ -9,19 +9,25 @@
   <body class="bg-gray-50 text-gray-900">
     <header class="bg-indigo-600 text-white p-3 sm:p-4">
       <div class="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <a href="/" class="font-semibold text-lg">Expense Tracker</a>
+        <a href="/" class="font-semibold text-lg" data-lang-en="Expense Tracker" data-lang-kn="ಖರ್ಚು ಟ್ರ್ಯಾಕರ್">Expense Tracker</a>
         <nav class="flex items-center gap-2 sm:gap-4 flex-wrap">
-          <a class="hover:underline text-sm" href="/">Dashboard</a>
+          <!-- Language Switcher -->
+          <select id="language-selector" onchange="changeLanguage(this.value)" class="bg-white text-gray-800 text-xs px-2 py-1 rounded border">
+            <option value="en">English</option>
+            <option value="kn">ಕನ್ನಡ</option>
+          </select>
+          
+          <a class="hover:underline text-sm" href="/" data-lang-en="Dashboard" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್">Dashboard</a>
           {% if user.is_authenticated %}
             {% if user.is_staff %}
-              <a class="hover:underline text-xs sm:text-sm" href="{% url 'manage_passwords' %}">Manage Passwords</a>
+              <a class="hover:underline text-xs sm:text-sm" href="{% url 'manage_passwords' %}" data-lang-en="Manage Passwords" data-lang-kn="ಪಾಸ್‌ವರ್ಡ್ ನಿರ್ವಹಣೆ">Manage Passwords</a>
             {% endif %}
-            <span class="text-xs sm:text-sm">{{ user.username }}{% if user.is_staff %} (Admin){% endif %}</span>
-            <a href="{% url 'logout' %}" class="bg-red-500 hover:bg-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm">Logout</a>
+            <span class="text-xs sm:text-sm">{{ user.username }}{% if user.is_staff %} (<span data-lang-en="Admin" data-lang-kn="ನಿರ್ವಾಹಕ">Admin</span>){% endif %}</span>
+            <a href="{% url 'logout' %}" class="bg-red-500 hover:bg-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm" data-lang-en="Logout" data-lang-kn="ಲಾಗ್ಔಟ್">Logout</a>
           {% elif request.session.view_access %}
-            <a href="{% url 'logout' %}" class="bg-red-500 hover:bg-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm">Logout</a>
+            <a href="{% url 'logout' %}" class="bg-red-500 hover:bg-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm" data-lang-en="Logout" data-lang-kn="ಲಾಗ್ಔಟ್">Logout</a>
           {% else %}
-            <a href="{% url 'login' %}" class="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm">Admin</a>
+            <a href="{% url 'login' %}" class="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm" data-lang-en="Admin" data-lang-kn="ನಿರ್ವಾಹಕ">Admin</a>
           {% endif %}
         </nav>
       </div>
@@ -29,5 +35,30 @@
     <main class="container mx-auto p-3 sm:p-4 max-w-7xl">
       {% block content %}{% endblock %}
     </main>
+    
+    <script>
+      function changeLanguage(lang) {
+        localStorage.setItem('preferred_language', lang);
+        updatePageLanguage(lang);
+      }
+      
+      function updatePageLanguage(lang) {
+        const elements = document.querySelectorAll('[data-lang-en]');
+        elements.forEach(el => {
+          if (lang === 'kn' && el.getAttribute('data-lang-kn')) {
+            el.textContent = el.getAttribute('data-lang-kn');
+          } else if (el.getAttribute('data-lang-en')) {
+            el.textContent = el.getAttribute('data-lang-en');
+          }
+        });
+      }
+      
+      // Load saved language preference
+      document.addEventListener('DOMContentLoaded', function() {
+        const savedLang = localStorage.getItem('preferred_language') || 'en';
+        document.getElementById('language-selector').value = savedLang;
+        updatePageLanguage(savedLang);
+      });
+    </script>
   </body>
 </html>

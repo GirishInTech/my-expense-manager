@@ -2,11 +2,9 @@
 {% block content %}
 <div class="max-w-md mx-auto mt-6 sm:mt-10 px-3 sm:px-0">
   <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Enter Password to View</h1>
+    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center" data-lang-en="Enter Password to View" data-lang-kn="ವೀಕ್ಷಿಸಲು ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ">Enter Password to View</h1>
     
-    <p class="text-gray-600 text-sm sm:text-base mb-6 text-center">
-      Enter the password shared with you to view expense records.
-    </p>
+    <p class="text-gray-600 text-sm sm:text-base mb-6 text-center" data-lang-en="Enter the password shared with you to view expense records." data-lang-kn="ಖರ್ಚು ದಾಖಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ.">Enter the password shared with you to view expense records.</p>
     
     {% if messages %}
     <div class="mb-4">
@@ -21,7 +19,7 @@
     <form method="post" class="space-y-4">
       {% csrf_token %}
       <div>
-        <label for="view_password" class="block text-sm font-medium mb-2">Password</label>
+        <label for="view_password" class="block text-sm font-medium mb-2" data-lang-en="Password" data-lang-kn="ಪಾಸ್‌ವರ್ಡ್">Password</label>
         <input 
           type="password" 
           id="view_password" 
@@ -32,15 +30,40 @@
           autofocus
         >
       </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded">
-        Access Dashboard
-      </button>
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded" data-lang-en="Access Dashboard" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಪ್ರವೇಶಿಸಿ">Access Dashboard</button>
     </form>
+    
+    <!-- Instructions Section -->
+    <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <h3 class="text-sm font-semibold text-blue-900 mb-3" data-lang-en="📋 After Login, You Can:" data-lang-kn="📋 ಲಾಗಿನ್ ನಂತರ, ನೀವು ಮಾಡಬಹುದು:">📋 After Login, You Can:</h3>
+      <ul class="space-y-2 text-xs sm:text-sm text-gray-700">
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">✓</span>
+          <span data-lang-en="View all expenses - See complete spending details with amounts, categories, and dates" data-lang-kn="ಎಲ್ಲಾ ಖರ್ಚುಗಳನ್ನು ವೀಕ್ಷಿಸಿ - ಮೊತ್ತಗಳು, ವರ್ಗಗಳು ಮತ್ತು ದಿನಾಂಕಗಳೊಂದಿಗೆ ಸಂಪೂರ್ಣ ಖರ್ಚು ವಿವರಗಳನ್ನು ನೋಡಿ"><strong>View all expenses</strong> - See complete spending details with amounts, categories, and dates</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">✓</span>
+          <span data-lang-en="Filter by dates - Use date filters or quick buttons (Today, This Week, This Month)" data-lang-kn="ದಿನಾಂಕದ ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಿ - ದಿನಾಂಕ ಫಿಲ್ಟರ್‌ಗಳು ಅಥವಾ ತ್ವರಿತ ಬಟನ್‌ಗಳನ್ನು ಬಳಸಿ (ಇಂದು, ಈ ವಾರ, ಈ ತಿಂಗಳು)"><strong>Filter by dates</strong> - Use date filters or quick buttons (Today, This Week, This Month)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">✓</span>
+          <span data-lang-en="Check monthly totals - See total spending and daily breakdowns" data-lang-kn="ಮಾಸಿಕ ಒಟ್ಟುಗಳನ್ನು ಪರಿಶೀಲಿಸಿ - ಒಟ್ಟು ಖರ್ಚು ಮತ್ತು ದೈನಂದಿನ ವಿಭಜನೆಗಳನ್ನು ನೋಡಿ"><strong>Check monthly totals</strong> - See total spending and daily breakdowns</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">✓</span>
+          <span data-lang-en="Browse by month - Select different months from the dropdown menu" data-lang-kn="ತಿಂಗಳ ಮೂಲಕ ಬ್ರೌಸ್ ಮಾಡಿ - ಡ್ರಾಪ್‌ಡೌನ್ ಮೆನುವಿನಿಂದ ವಿವಿಧ ತಿಂಗಳುಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"><strong>Browse by month</strong> - Select different months from the dropdown menu</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">✓</span>
+          <span data-lang-en="Scroll through all records - View complete expense history in the table" data-lang-kn="ಎಲ್ಲಾ ದಾಖಲೆಗಳ ಮೂಲಕ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ - ಟೇಬಲ್‌ನಲ್ಲಿ ಸಂಪೂರ್ಣ ಖರ್ಚು ಇತಿಹಾಸವನ್ನು ವೀಕ್ಷಿಸಿ"><strong>Scroll through all records</strong> - View complete expense history in the table</span>
+        </li>
+      </ul>
+    </div>
     
     <div class="mt-6 text-center">
       <p class="text-sm text-gray-600">
-        Are you an admin? 
-        <a href="{% url 'login' %}" class="text-indigo-600 hover:underline font-medium">Admin Login</a>
+        <span data-lang-en="Are you an admin?" data-lang-kn="ನೀವು ನಿರ್ವಾಹಕರೇ?">Are you an admin?</span>
+        <a href="{% url 'login' %}" class="text-indigo-600 hover:underline font-medium" data-lang-en="Admin Login" data-lang-kn="ನಿರ್ವಾಹಕ ಲಾಗಿನ್">Admin Login</a>
       </p>
     </div>
   </div>

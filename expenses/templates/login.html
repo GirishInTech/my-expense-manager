@@ -2,7 +2,7 @@
 {% block content %}
 <div class="max-w-md mx-auto mt-6 sm:mt-10 px-3 sm:px-0">
   <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Admin Login</h1>
+    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center" data-lang-en="Admin Login" data-lang-kn="ನಿರ್ವಾಹಕ ಲಾಗಿನ್">Admin Login</h1>
     
     {% if messages %}
     <div class="mb-4">
@@ -17,26 +17,24 @@
     <form method="post" class="space-y-4">
       {% csrf_token %}
       <div>
-        <label for="id_username" class="block text-sm font-medium mb-2">Username</label>
+        <label for="id_username" class="block text-sm font-medium mb-2" data-lang-en="Username" data-lang-kn="ಬಳಕೆದಾರ ಹೆಸರು">Username</label>
         {{ form.username }}
         {% if form.username.errors %}
           <p class="text-red-500 text-xs mt-1">{{ form.username.errors.0 }}</p>
         {% endif %}
       </div>
       <div>
-        <label for="id_password" class="block text-sm font-medium mb-2">Password</label>
+        <label for="id_password" class="block text-sm font-medium mb-2" data-lang-en="Password" data-lang-kn="ಪಾಸ್‌ವರ್ಡ್">Password</label>
         {{ form.password }}
         {% if form.password.errors %}
           <p class="text-red-500 text-xs mt-1">{{ form.password.errors.0 }}</p>
         {% endif %}
       </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded">
-        Login
-      </button>
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded" data-lang-en="Login" data-lang-kn="ಲಾಗಿನ್">Login</button>
     </form>
     
     <div class="mt-4 text-center">
-      <a href="{% url 'dashboard' %}" class="text-sm text-indigo-600 hover:underline">Back to Dashboard</a>
+      <a href="{% url 'dashboard' %}" class="text-sm text-indigo-600 hover:underline" data-lang-en="Back to Dashboard" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ">Back to Dashboard</a>
     </div>
   </div>
 </div>
