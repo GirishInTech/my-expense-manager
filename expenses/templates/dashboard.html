@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+  <h1 class="text-xl sm:text-2xl font-semibold">Dashboard - {{ year }} / {{ month }}</h1>
+  <div class="flex items-center space-x-2 sm:space-x-4">
+    <form method="get" action="/" class="flex items-center space-x-2">
+      <label for="month" class="text-sm">Month:</label>
+      <select id="month" name="month" class="border rounded p-1.5 text-sm">
+        {% for m in months %}
+          <option value="{{ m }}" {% if m == month %}selected{% endif %}>{{ m }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1.5 rounded text-sm">Go</button>
+    </form>
+  </div>
+</div>
+
+<div class="bg-blue-50 border border-blue-200 p-3 sm:p-4 rounded shadow mb-4">
+  <form method="get" action="/" class="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-end gap-3">
+    <div class="flex-1 min-w-[140px]">
+      <label for="filter_start" class="block text-sm font-medium mb-1">From Date</label>
+      <input type="date" id="filter_start" name="filter_start" value="{{ filter_start|date:'Y-m-d' }}" class="border rounded p-2 w-full text-sm">
+    </div>
+    <div class="flex-1 min-w-[140px]">
+      <label for="filter_end" class="block text-sm font-medium mb-1">To Date</label>
+      <input type="date" id="filter_end" name="filter_end" value="{{ filter_end|date:'Y-m-d' }}" class="border rounded p-2 w-full text-sm">
+    </div>
+    <div class="flex gap-2">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 rounded font-medium text-sm flex-1 sm:flex-none">Filter</button>
+      <a href="/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 sm:px-6 py-2 rounded font-medium text-sm inline-block text-center flex-1 sm:flex-none">Clear</a>
+    </div>
+  </form>
+</div>
+
+{% if messages %}
+<div class="mb-4">
+  {% for message in messages %}
+  <div class="{% if 'success' in message.tags %}bg-green-100 border-green-400 text-green-700{% else %}bg-red-100 border-red-400 text-red-700{% endif %} border px-4 py-3 rounded">
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if user.is_staff %}
+<div class="bg-white p-4 sm:p-6 rounded-lg shadow mb-4 sm:mb-6">
+  <h2 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Add New Expense</h2>
+  <form method="post" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+    {% csrf_token %}
+    <div>
+      <label for="id_date" class="block text-sm font-medium mb-1">Date</label>
+      {{ form.date }}
+      {% if form.date.errors %}
+        <p class="text-red-500 text-xs mt-1">{{ form.date.errors.0 }}</p>
+      {% endif %}
+    </div>
+    <div>
+      <label for="id_amount" class="block text-sm font-medium mb-1">Amount (₹)</label>
+      {{ form.amount }}
+      {% if form.amount.errors %}
+        <p class="text-red-500 text-xs mt-1">{{ form.amount.errors.0 }}</p>
+      {% endif %}
+    </div>
+    <div>
+      <label for="id_category" class="block text-sm font-medium mb-1">Category</label>
+      {{ form.category }}
+      {% if form.category.errors %}
+        <p class="text-red-500 text-xs mt-1">{{ form.category.errors.0 }}</p>
+      {% endif %}
+    </div>
+    <div>
+      <label for="id_description" class="block text-sm font-medium mb-1">Description</label>
+      {{ form.description }}
+      {% if form.description.errors %}
+        <p class="text-red-500 text-xs mt-1">{{ form.description.errors.0 }}</p>
+      {% endif %}
+    </div>
+    <div class="sm:col-span-2 lg:col-span-4">
+      <button type="submit" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2.5 px-6 rounded">
+        Add Expense
+      </button>
+    </div>
+  </form>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+  <div class="bg-white p-4 rounded-lg shadow">
+    <div class="text-sm text-gray-600">Total this period</div>
+    <div class="text-2xl sm:text-3xl font-bold">₹{{ total_for_month }}</div>
+  </div>
+  <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow">
+    <div class="text-sm font-semibold mb-2">Daily Totals</div>
+    <div class="overflow-x-auto -mx-4 px-4">
+      <table class="min-w-full text-sm">
+        <thead>
+          <tr class="text-left border-b">
+            <th class="py-2 pr-4">Date</th>
+            <th class="py-2">Total (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in daily_breakdown %}
+          <tr class="border-b">
+            <td class="py-2 pr-4">{{ d.date }}</td>
+            <td class="py-2">{{ d.total }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="2" class="py-2 text-gray-500">No expenses yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white p-3 sm:p-4 rounded-lg shadow">
+  <div class="text-sm font-semibold mb-3">All Expenses ({{ expenses|length }})</div>
+  <div class="overflow-x-auto -mx-3 sm:-mx-4">
+    <div class="inline-block min-w-full align-middle">
+      <table class="min-w-full text-sm">
+        <thead>
+          <tr class="text-left border-b bg-gray-50">
+            <th class="py-2 px-3 sm:px-2">Date</th>
+            <th class="py-2 px-3 sm:px-2">Amount (₹)</th>
+            <th class="py-2 px-3 sm:px-2">Category</th>
+            <th class="py-2 px-3 sm:px-2 hidden sm:table-cell">Description</th>
+            {% if user.is_staff %}
+            <th class="py-2 px-3 sm:px-2">Actions</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for e in expenses %}
+          <tr class="border-b hover:bg-gray-50">
+            <td class="py-2.5 px-3 sm:px-2 whitespace-nowrap text-xs sm:text-sm">{{ e.date|date:"M j" }}</td>
+            <td class="py-2.5 px-3 sm:px-2 whitespace-nowrap font-medium">{{ e.amount }}</td>
+            <td class="py-2.5 px-3 sm:px-2">
+              <div class="max-w-[100px] sm:max-w-none truncate" title="{{ e.category }}">{{ e.category }}</div>
+              <div class="sm:hidden text-xs text-gray-500 mt-1 truncate max-w-[150px]" title="{{ e.description }}">{{ e.description }}</div>
+            </td>
+            <td class="py-2.5 px-3 sm:px-2 hidden sm:table-cell">
+              <div class="max-w-xs truncate" title="{{ e.description }}">{{ e.description }}</div>
+            </td>
+            {% if user.is_staff %}
+            <td class="py-2.5 px-3 sm:px-2 whitespace-nowrap">
+              <a href="{% url 'edit_expense' e.id %}" class="text-blue-600 hover:underline text-xs sm:text-sm inline-block mr-2 sm:mr-3">Edit</a>
+              <a href="{% url 'delete_expense' e.id %}" class="text-red-600 hover:underline text-xs sm:text-sm inline-block">Delete</a>
+            </td>
+            {% endif %}
+          </tr>
+          {% empty %}
+          <tr><td colspan="{% if user.is_staff %}5{% else %}4{% endif %}" class="py-3 px-3 sm:px-2 text-gray-500 text-center">No expenses for this period.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

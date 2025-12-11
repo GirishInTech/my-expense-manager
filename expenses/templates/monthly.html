@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mb-4">
+  <h1 class="text-2xl font-semibold">Expenses for {{ year }} / {{ month }}</h1>
+  <p class="text-gray-600">Total: ₹{{ total_for_month }}</p>
+  <p class="mt-2"><a class="text-indigo-600 hover:underline" href="/">Back to dashboard</a></p>
+</div>
+
+<div class="bg-white p-4 rounded shadow">
+  <table class="min-w-full text-sm">
+    <thead>
+      <tr class="text-left border-b">
+        <th class="py-2">Date</th>
+        <th class="py-2">Amount (₹)</th>
+        <th class="py-2">Category</th>
+        <th class="py-2">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in expenses %}
+      <tr class="border-b">
+        <td class="py-2">{{ e.date }}</td>
+        <td class="py-2">{{ e.amount }}</td>
+        <td class="py-2">{{ e.category }}</td>
+        <td class="py-2">{{ e.description }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" class="py-2 text-gray-500">No expenses for this month.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
