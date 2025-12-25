@@ -1,0 +1,1255 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "expenses",
+    "model": "expense"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "expenses",
+    "model": "viewpassword"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "972lnmm1p1e3t113fac3t83lapdm5906",
+  "fields": {
+    "session_data": "eyJ2aWV3X2FjY2VzcyI6dHJ1ZX0:1vTqNo:s2Hegzfmd1RkFq-gq2DpUsvHPYn1Abs9kTySWRqRvR4",
+    "expire_date": "2025-12-25T23:47:40.246Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dazxtg2jt23w3ma4cerodm75e0o26r3t",
+  "fields": {
+    "session_data": "eyJ2aWV3X2FjY2VzcyI6ZmFsc2V9:1vTqNX:VFi--_PoAPR4ieIp2sPX9WyaemWStP3QK2RqcY_IPt0",
+    "expire_date": "2025-12-25T23:47:23.701Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "phzz7o3nn907wigi860oze102ye0oslc",
+  "fields": {
+    "session_data": "eyJ2aWV3X2FjY2VzcyI6dHJ1ZX0:1vXh1t:dLhGaTfFuH8SRC0hFodYXRdVyWRC4KASJSQ6saK5Ges",
+    "expire_date": "2026-01-05T14:36:57.050Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "pju8okwdwhuesfnvxsiyqypi4s79wsza",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGF8ihduvcbyMBMLWpoAlQXxn-3TbrQ7T3nnjfzsLbZr5WKT8hGJtjpdwsQ75R3gDfI14XHJbeSAt8VftDKLwvS43y4f4EZ6ry9JU7BCByAwNLgSA9BYkdOgRTGBCetnQyqXneAwSC4DrXQKlrdS6Os3aLPRC8PMVKtbGxlpc8XWm8-pQ:1vVs85:AL-MgL0ey26kP7PvVTfzhzUEbpnuWZq48leGBcfpbNU",
+    "expire_date": "2025-12-31T14:03:49.959Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "r8ooqppd9foruzq7wpnqv5okalvge0ds",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGF8ihduvcbyMBMLWpoAlQXxn-3TbrQ7T3nnjfzsLbZr5WKT8hGJtjpdwsQ75R3gDfI14XHJbeSAt8VftDKLwvS43y4f4EZ6ry9JU7BCByAwNLgSA9BYkdOgRTGBCetnQyqXneAwSC4DrXQKlrdS6Os3aLPRC8PMVKtbGxlpc8XWm8-pQ:1vYisk:jw6hvkXP-Pa8dUhnLwX7l-IiVl9yzsPeiX_kgQBBqSE",
+    "expire_date": "2026-01-08T10:47:46.902Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "z5ncctdzbc67spva2ebsp5s6ohwxddcr",
+  "fields": {
+    "session_data": ".eJxVjDsOgzAQBe-ydWRh4y9les5grb1LTBKBhCEpotw9QaKhfTPzPvAa-R0xZ64VunXZ-AIRt7XErfISR4IOJJy2hPnB0w7ojtNtFnme1mVMYlfEQavoZ-Ln9XBPBwVr-deKhmQleWR07AMbnxQ1HDQqaW0KyrnBkm5Ng5QsYWjISKOzM62y2jn4_gDnBT6l:1vYiTW:hwg2sgedUaNsRUqXSBZb_K8IgoeHgKCquA0O9SNQ4f8",
+    "expire_date": "2026-01-08T10:21:42.578Z"
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 1,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "60.00",
+    "category": "egg  bhurji",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 2,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "30.00",
+    "category": "pineapple",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 3,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "25.00",
+    "category": "badam milk",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 4,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "80.00",
+    "category": "afternoon lunch college(paneer parota)",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 5,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "6.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 6,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "30.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 7,
+  "fields": {
+    "date": "2025-12-11",
+    "amount": "45.00",
+    "category": "breakfast",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 8,
+  "fields": {
+    "date": "2025-12-10",
+    "amount": "6.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 9,
+  "fields": {
+    "date": "2025-12-10",
+    "amount": "130.00",
+    "category": "chicken dinner",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 10,
+  "fields": {
+    "date": "2025-12-10",
+    "amount": "300.00",
+    "category": "metro",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 11,
+  "fields": {
+    "date": "2025-12-10",
+    "amount": "27.00",
+    "category": "banana, coffee",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 12,
+  "fields": {
+    "date": "2025-12-09",
+    "amount": "60.00",
+    "category": "chicken",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 13,
+  "fields": {
+    "date": "2025-12-09",
+    "amount": "66.00",
+    "category": "badminton",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 14,
+  "fields": {
+    "date": "2025-12-09",
+    "amount": "60.00",
+    "category": "snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 15,
+  "fields": {
+    "date": "2025-12-09",
+    "amount": "80.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 16,
+  "fields": {
+    "date": "2025-12-08",
+    "amount": "70.00",
+    "category": "momos snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 17,
+  "fields": {
+    "date": "2025-12-08",
+    "amount": "12.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 18,
+  "fields": {
+    "date": "2025-12-08",
+    "amount": "30.00",
+    "category": "coconut",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 19,
+  "fields": {
+    "date": "2025-12-06",
+    "amount": "60.00",
+    "category": "coconut",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 20,
+  "fields": {
+    "date": "2025-12-07",
+    "amount": "20.00",
+    "category": "badam milk",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 21,
+  "fields": {
+    "date": "2025-12-06",
+    "amount": "85.00",
+    "category": "milkshake",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 22,
+  "fields": {
+    "date": "2025-12-07",
+    "amount": "30.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 23,
+  "fields": {
+    "date": "2025-12-06",
+    "amount": "12.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 24,
+  "fields": {
+    "date": "2025-12-06",
+    "amount": "110.00",
+    "category": "chicken biryani",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 25,
+  "fields": {
+    "date": "2025-12-06",
+    "amount": "48.00",
+    "category": "snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 26,
+  "fields": {
+    "date": "2025-12-10",
+    "amount": "450.00",
+    "category": "movie and food",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 27,
+  "fields": {
+    "date": "2025-12-12",
+    "amount": "6.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 28,
+  "fields": {
+    "date": "2025-12-12",
+    "amount": "80.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 29,
+  "fields": {
+    "date": "2025-12-12",
+    "amount": "40.00",
+    "category": "watermelon juice",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 30,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "45.00",
+    "category": "breakfast",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 31,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "60.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 32,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "60.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 33,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "44.00",
+    "category": "badminton game",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 34,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "70.00",
+    "category": "egg bhurji",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 35,
+  "fields": {
+    "date": "2025-12-14",
+    "amount": "142.00",
+    "category": "food and snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 36,
+  "fields": {
+    "date": "2025-12-15",
+    "amount": "6.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 37,
+  "fields": {
+    "date": "2025-12-15",
+    "amount": "60.00",
+    "category": "set dosa",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 38,
+  "fields": {
+    "date": "2025-12-15",
+    "amount": "60.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 39,
+  "fields": {
+    "date": "2025-12-15",
+    "amount": "240.00",
+    "category": "dhurandar movie",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 40,
+  "fields": {
+    "date": "2025-12-16",
+    "amount": "40.00",
+    "category": "metro",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 41,
+  "fields": {
+    "date": "2025-12-16",
+    "amount": "110.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 42,
+  "fields": {
+    "date": "2025-12-16",
+    "amount": "6.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 43,
+  "fields": {
+    "date": "2025-12-17",
+    "amount": "50.00",
+    "category": "cake",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 44,
+  "fields": {
+    "date": "2025-12-17",
+    "amount": "80.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 45,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "650.00",
+    "category": "minoxidil for hair growth",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 46,
+  "fields": {
+    "date": "2025-12-13",
+    "amount": "210.00",
+    "category": "food and snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 47,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "30.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 48,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "18.00",
+    "category": "bus",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 49,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "80.00",
+    "category": "lunch in college",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 50,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "20.00",
+    "category": "banana",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 51,
+  "fields": {
+    "date": "2025-12-21",
+    "amount": "18.00",
+    "category": "banana",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 52,
+  "fields": {
+    "date": "2025-12-21",
+    "amount": "105.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 53,
+  "fields": {
+    "date": "2025-12-20",
+    "amount": "40.00",
+    "category": "egg bhurji",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 54,
+  "fields": {
+    "date": "2025-12-20",
+    "amount": "69.00",
+    "category": "badminton",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 55,
+  "fields": {
+    "date": "2025-12-20",
+    "amount": "75.00",
+    "category": "chicken kabab",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 56,
+  "fields": {
+    "date": "2025-12-20",
+    "amount": "30.00",
+    "category": "ragi muddi",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 57,
+  "fields": {
+    "date": "2025-12-20",
+    "amount": "45.00",
+    "category": "breakfast",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 58,
+  "fields": {
+    "date": "2025-12-19",
+    "amount": "93.00",
+    "category": "badminton",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 59,
+  "fields": {
+    "date": "2025-12-19",
+    "amount": "45.00",
+    "category": "snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 60,
+  "fields": {
+    "date": "2025-12-19",
+    "amount": "65.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 61,
+  "fields": {
+    "date": "2025-12-19",
+    "amount": "80.00",
+    "category": "badminton cocks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 62,
+  "fields": {
+    "date": "2025-12-18",
+    "amount": "12.00",
+    "category": "banana",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 63,
+  "fields": {
+    "date": "2025-12-18",
+    "amount": "40.00",
+    "category": "egg bhurji",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 64,
+  "fields": {
+    "date": "2025-12-18",
+    "amount": "120.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 65,
+  "fields": {
+    "date": "2025-12-18",
+    "amount": "27.00",
+    "category": "banana and snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 66,
+  "fields": {
+    "date": "2025-12-18",
+    "amount": "130.00",
+    "category": "chicken rice koota",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 67,
+  "fields": {
+    "date": "2025-12-17",
+    "amount": "40.00",
+    "category": "metro",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 68,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "30.00",
+    "category": "coconut water",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 69,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "40.00",
+    "category": "bhurji",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 70,
+  "fields": {
+    "date": "2025-12-22",
+    "amount": "20.00",
+    "category": "banana",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 71,
+  "fields": {
+    "date": "2025-12-23",
+    "amount": "30.00",
+    "category": "idli",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 72,
+  "fields": {
+    "date": "2025-12-23",
+    "amount": "170.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 73,
+  "fields": {
+    "date": "2025-12-24",
+    "amount": "60.00",
+    "category": "lunch",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 74,
+  "fields": {
+    "date": "2025-12-24",
+    "amount": "46.00",
+    "category": "rapido",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.expense",
+  "pk": 75,
+  "fields": {
+    "date": "2025-12-25",
+    "amount": "19.00",
+    "category": "snacks",
+    "description": ""
+  }
+},
+{
+  "model": "expenses.viewpassword",
+  "pk": 3,
+  "fields": {
+    "password": "9901",
+    "label": "Amma",
+    "created_at": "2025-12-11T22:58:30.767Z",
+    "is_active": true
+  }
+},
+{
+  "model": "expenses.viewpassword",
+  "pk": 4,
+  "fields": {
+    "password": "9902",
+    "label": "Appa",
+    "created_at": "2025-12-11T22:58:38.338Z",
+    "is_active": true
+  }
+},
+{
+  "model": "expenses.viewpassword",
+  "pk": 5,
+  "fields": {
+    "password": "8904",
+    "label": "Raju anna",
+    "created_at": "2025-12-11T22:58:57.861Z",
+    "is_active": true
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add expense",
+    "content_type": [
+      "expenses",
+      "expense"
+    ],
+    "codename": "add_expense"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change expense",
+    "content_type": [
+      "expenses",
+      "expense"
+    ],
+    "codename": "change_expense"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete expense",
+    "content_type": [
+      "expenses",
+      "expense"
+    ],
+    "codename": "delete_expense"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view expense",
+    "content_type": [
+      "expenses",
+      "expense"
+    ],
+    "codename": "view_expense"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add view password",
+    "content_type": [
+      "expenses",
+      "viewpassword"
+    ],
+    "codename": "add_viewpassword"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change view password",
+    "content_type": [
+      "expenses",
+      "viewpassword"
+    ],
+    "codename": "change_viewpassword"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete view password",
+    "content_type": [
+      "expenses",
+      "viewpassword"
+    ],
+    "codename": "delete_viewpassword"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view view password",
+    "content_type": [
+      "expenses",
+      "viewpassword"
+    ],
+    "codename": "view_viewpassword"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$H62cOi5lBRTIvOf3snKsfY$RJ9bZBHwJngBj9WsF2P1zpI4Sa00qYdn8n/gcvfqnFA=",
+    "last_login": "2025-12-25T10:47:46.626Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-11T22:06:47.682Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
