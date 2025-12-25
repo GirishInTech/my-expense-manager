@@ -36,6 +36,10 @@ def dashboard(request):
     # Get date filter parameters
     filter_start = request.GET.get("filter_start")
     filter_end = request.GET.get("filter_end")
+    
+    # Get pagination parameters
+    daily_page = int(request.GET.get("daily_page", 1))
+    expense_page = int(request.GET.get("expense_page", 1))
 
     if request.method == "POST" and request.user.is_staff:
         form = ExpenseForm(request.POST)
@@ -46,32 +50,74 @@ def dashboard(request):
     else:
         form = ExpenseForm(initial={"date": today}) if request.user.is_staff else None
 
-    start, end = _get_month_range(year, month)
-    
-    # Apply date filters if provided
-    if filter_start and filter_end:
-        try:
-            from datetime import datetime
-            start = datetime.strptime(filter_start, "%Y-%m-%d").date()
-            end = datetime.strptime(filter_end, "%Y-%m-%d").date()
-        except ValueError:
-            messages.error(request, "Invalid date format.")
-    
-    qs = Expense.objects.filter(date__range=(start, end)).order_by("-date", "-id")
+    # Check if "All Time" is selected (month = 0)
+    if month == 0:
+        # Get all expenses without date filtering
+        start = None
+        end = None
+        qs = Expense.objects.all().order_by("-date", "-id")
+    else:
+        start, end = _get_month_range(year, month)
+        
+        # Apply date filters if provided
+        if filter_start and filter_end:
+            try:
+                from datetime import datetime
+                start = datetime.strptime(filter_start, "%Y-%m-%d").date()
+                end = datetime.strptime(filter_end, "%Y-%m-%d").date()
+            except ValueError:
+                messages.error(request, "Invalid date format.")
+        
+        qs = Expense.objects.filter(date__range=(start, end)).order_by("-date", "-id")
 
     total_for_month = qs.aggregate(total=Sum("amount"))["total"] or 0
 
-    # Daily totals
-    daily_totals_qs = (
-        Expense.objects.filter(date__range=(start, end))
-        .values("date")
-        .annotate(total=Sum("amount"))
-        .order_by("date")
-    )
-    daily_breakdown = list(daily_totals_qs)
+    # Daily totals with pagination (10 per page)
+    if month == 0:
+        # All time - get all daily totals
+        daily_totals_qs = (
+            Expense.objects.all()
+            .values("date")
+            .annotate(total=Sum("amount"))
+            .order_by("-date")
+        )
+    else:
+        daily_totals_qs = (
+            Expense.objects.filter(date__range=(start, end))
+            .values("date")
+            .annotate(total=Sum("amount"))
+            .order_by("-date")
+        )
+    daily_breakdown_full = list(daily_totals_qs)
+    daily_per_page = 10
+    daily_start = (daily_page - 1) * daily_per_page
+    daily_end = daily_start + daily_per_page
+    daily_breakdown = daily_breakdown_full[daily_start:daily_end]
+    daily_has_prev = daily_page > 1
+    daily_has_next = daily_end < len(daily_breakdown_full)
+    
+    # Calculate date range for daily breakdown
+    daily_date_range = ""
+    if daily_breakdown:
+        first_date = daily_breakdown[0]['date']
+        last_date = daily_breakdown[-1]['date']
+        daily_date_range = f"{first_date.strftime('%b %d')} - {last_date.strftime('%b %d')}"
 
-    # Show all expenses for the month instead of limiting to 10
-    all_expenses = list(qs)
+    # Expenses with pagination (20 per page)
+    all_expenses_full = list(qs)
+    expense_per_page = 20
+    expense_start = (expense_page - 1) * expense_per_page
+    expense_end = expense_start + expense_per_page
+    all_expenses = all_expenses_full[expense_start:expense_end]
+    expense_has_prev = expense_page > 1
+    expense_has_next = expense_end < len(all_expenses_full)
+    
+    # Calculate date range for expenses
+    expense_date_range = ""
+    if all_expenses:
+        first_date = all_expenses[0].date
+        last_date = all_expenses[-1].date
+        expense_date_range = f"{first_date.strftime('%b %d')} - {last_date.strftime('%b %d')}"
 
     context = {
         "year": year,
@@ -83,6 +129,15 @@ def dashboard(request):
         "form": form,
         "filter_start": filter_start or start,
         "filter_end": filter_end or end,
+        "daily_page": daily_page,
+        "daily_has_prev": daily_has_prev,
+        "daily_has_next": daily_has_next,
+        "daily_date_range": daily_date_range,
+        "expense_page": expense_page,
+        "expense_has_prev": expense_has_prev,
+        "expense_has_next": expense_has_next,
+        "expense_date_range": expense_date_range,
+        "total_expenses_count": len(all_expenses_full),
     }
     return render(request, "dashboard.html", context)
 

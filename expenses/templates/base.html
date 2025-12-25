@@ -12,10 +12,16 @@
         <a href="/" class="font-semibold text-lg" data-lang-en="Expense Tracker" data-lang-kn="ಖರ್ಚು ಟ್ರ್ಯಾಕರ್">Expense Tracker</a>
         <nav class="flex items-center gap-2 sm:gap-4 flex-wrap">
           <!-- Language Switcher -->
-          <select id="language-selector" onchange="changeLanguage(this.value)" class="bg-white text-gray-800 text-xs px-2 py-1 rounded border">
-            <option value="en">English</option>
-            <option value="kn">ಕನ್ನಡ</option>
-          </select>
+          <div class="relative">
+            <div class="flex items-center gap-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-1 shadow-lg">
+              <button onclick="changeLanguage('en')" id="lang-en" class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 ease-in-out hover:bg-white/20">
+                EN
+              </button>
+              <button onclick="changeLanguage('kn')" id="lang-kn" class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 ease-in-out hover:bg-white/20">
+                ಕನ್ನಡ
+              </button>
+            </div>
+          </div>
           
           <a class="hover:underline text-sm" href="/" data-lang-en="Dashboard" data-lang-kn="ಡ್ಯಾಶ್‌ಬೋರ್ಡ್">Dashboard</a>
           {% if user.is_authenticated %}
@@ -40,6 +46,23 @@
       function changeLanguage(lang) {
         localStorage.setItem('preferred_language', lang);
         updatePageLanguage(lang);
+        updateLanguageButtons(lang);
+      }
+      
+      function updateLanguageButtons(lang) {
+        const enBtn = document.getElementById('lang-en');
+        const knBtn = document.getElementById('lang-kn');
+        
+        // Remove active class from both
+        enBtn.classList.remove('bg-white', 'text-indigo-600', 'shadow-md');
+        knBtn.classList.remove('bg-white', 'text-indigo-600', 'shadow-md');
+        
+        // Add active class to selected
+        if (lang === 'en') {
+          enBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-md');
+        } else {
+          knBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-md');
+        }
       }
       
       function updatePageLanguage(lang) {
@@ -67,8 +90,8 @@
       // Load saved language preference
       document.addEventListener('DOMContentLoaded', function() {
         const savedLang = localStorage.getItem('preferred_language') || 'en';
-        document.getElementById('language-selector').value = savedLang;
         updatePageLanguage(savedLang);
+        updateLanguageButtons(savedLang);
       });
     </script>
   </body>
